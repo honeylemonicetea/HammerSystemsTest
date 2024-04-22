@@ -22,9 +22,9 @@ router.register(r'profiles', UserViewSet)
 
 urlpatterns = [
     path("", home),
-    path("profile/<str:pk>", get_user_profile, name="profile"),
+    path("profile/<str:phone_number>", get_user_profile, name="profile"),
     path("api/", include(router.urls)),
-    path("api/profile/<str:pk>/", api_user_profile)
+    path("api/profile/<str:phone_number>/", api_user_profile)
 ]
 
 # urlpatterns = format_suffix_patterns(urlpatterns)
