@@ -1,0 +1,44 @@
+{% load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title%}
+        {% endblock%}
+    </title>
+    <link href="{% static 'css/style.css'%}" rel="stylesheet">
+</head>
+<body>
+    <div>
+        <a href="/">Главная</a>
+    </div>
+    {%block content%}
+    {%endblock%}
+
+
+    <script>
+        let form = document.querySelector("form")
+        let authButton = document.querySelector(".auth-button")
+        let authCodeInput = document.querySelector(".auth_code")
+        let popUp = document.querySelector(".pop-up")
+        let phoneInput = document.getElementById("id_phone_number")
+        console.log("djfkje")
+        authButton.onclick = (e) => {        
+            if (authCodeInput.value === "" && phoneInput.value !== "") {
+                e.preventDefault()
+                console.log("fjke")
+                popUp.classList.remove("hidden")
+                setTimeout(()=>{
+                    popUp.classList.add("hidden")
+                    authCodeInput.classList.remove("hidden")
+                }, 2000)
+                return false
+            } else {
+            }
+        }
+    </script>
+</body>
+</html>

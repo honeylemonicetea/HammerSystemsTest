@@ -1,0 +1,21 @@
+{% extends 'base.html'%}
+
+{% block title%}
+Главная
+{%endblock%}
+
+
+{% block content%}
+
+<form method="post">
+    {%csrf_token%}
+    <h2>Авторизация</h2>
+    {{form.as_p}}
+    <input placeholder="Введите код авторизации" name="auth_code" class="hidden auth_code">  <!-- this thing should apppear after 1-2 seconds -->
+    <button class="auth-button" type="submit">Авторизоваться</button>
+</form>
+<div class="pop-up hidden">
+    <p>Отправляем код авторизации</p>
+</div>
+{%endblock%}
+
