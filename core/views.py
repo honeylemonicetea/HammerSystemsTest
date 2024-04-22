@@ -69,7 +69,8 @@ def get_user_profile(request, phone_number):
                 else:
                     print("there's a code already")
                 print(current_user)
-            
+        else:
+            print("invalid form")
         return render(request, "user_profile.html", {"form": edit_profile})
 
 
