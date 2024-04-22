@@ -41,10 +41,10 @@ def home(request):
             
         # return render(request, "home.html", {"form": form})
     
-def get_user_profile(request, pk):
+def get_user_profile(request, phone_number):
     if request.method == "GET":
         # if the user has entered an invite code, output it in the field
-        user_info =  UserProfile.objects.get(phone_number=pk)
+        user_info =  UserProfile.objects.get(phone_number=phone_number)
         friends_invite_code = user_info.friends_invite_code
         edit_profile = EditUserProfile({"friends_invite_code":friends_invite_code})
         return render(request, "user_profile.html", {"form": edit_profile})
@@ -62,7 +62,7 @@ def get_user_profile(request, pk):
                 code_exists = False
                 
             if code_exists:
-                current_user = UserProfile.objects.get(phone_number = pk)
+                current_user = UserProfile.objects.get(phone_number = phone_number)
                 if current_user.friends_invite_code == "":
                     current_user.friends_invite_code = friends_invite_code
                     current_user.save()
@@ -81,12 +81,12 @@ class OneUserSerializer(serializers.Serializer):
         fields = ["phone_number", "friend_numbers"]
     
 @api_view(['GET'])
-def api_user_profile(request, pk):
+def api_user_profile(request, phone_number):
     print("api getttt")
-    user_data = UserProfile.objects.get(phone_number=pk)
+    user_data = UserProfile.objects.get(phone_number=phone_number)
     raw_all_users_phones = UserProfile.objects.filter(friends_invite_code=user_data.own_invite_code)
     all_users_phones = []
     for user in raw_all_users_phones:
         all_users_phones.append(user.phone_number)
-    serializer = OneUserSerializer({"phone_number":pk, "friend_numbers":all_users_phones})
+    serializer = OneUserSerializer({"phone_number":phone_number, "friend_numbers":all_users_phones})
     return Response(serializer.data, status=status.HTTP_200_OK)
