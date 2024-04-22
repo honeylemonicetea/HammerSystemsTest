@@ -25,10 +25,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = env("SECRET_KEY")
-SECRET_KEY = "django-insecure-a_!ukk$6fnpm5gpg*!lp1r%*q)9q%)fqq=8bma#7)nf-v7!!_o"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -94,7 +93,7 @@ DATABASES = {
     # }
     
      'default': dj_database_url.config(
-         default='postgres://testtaskdb_user:l5QgyebMsUT7R1RtlBgg6iTa3p4EdPaD@dpg-coira08l5elc73dceqh0-a.oregon-postgres.render.com/testtaskdb',
+         default=env("DB_URL"),
          conn_max_age=600
      )
     
