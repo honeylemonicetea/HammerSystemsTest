@@ -5,4 +5,4 @@
 ### API
 https://hammersystemstest.onrender.com/api/profiles - просмотреть все профили пользователей
 
-https://hammersystemstest.onrender.com/api/profile/<НОМЕР ТЕЛЕФОНА> - посмотреть номер одного пользователя и список, номеров, которые ввели его инвайт-код
+https://hammersystemstest.onrender.com/api/profile/<НОМЕР ТЕЛЕФОНА> - посмотреть номер одного пользователя и список номеров, которые ввели его инвайт-код
